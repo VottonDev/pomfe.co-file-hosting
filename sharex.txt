@@ -1,7 +1,7 @@
 {
 "Name": "pomfe.co",
 "RequestType": "POST",
-"RequestURL": "https://poomfe.co/upload.php",
+"RequestURL": "https://pomfe.co/upload.php",
 "FileFormName": "files[]",
 "Arguments": { },
 "ResponseType": "Text",
