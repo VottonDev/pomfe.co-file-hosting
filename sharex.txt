@@ -1,14 +1,14 @@
 {
-  "Name": "pomfe.co",
-  "RequestType": "POST",
-  "RequestURL": "https://pomfe.co/upload.php",
-  "FileFormName": "files[]",
-  "Arguments": {},
-  "ResponseType": "Text",
-  "RegexList": [
-"\"url\":"(.+?)""
+"Name": "pomfe.co",
+"RequestType": "POST",
+"RequestURL": "https://poomfe.co/upload.php",
+"FileFormName": "files[]",
+"Arguments": { },
+"ResponseType": "Text",
+"RegexList": [
+"\"url\":\"(?:.+\\\\/)?(.*?)\""
 ],
-  "URL": "https://pomfe.co/files/$1,1$",
-  "ThumbnailURL": "",
-  "DeletionURL": ""
+"URL": "https://pomfe.co/files/$1,1$",
+"ThumbnailURL": "",
+"DeletionURL": ""
 }
