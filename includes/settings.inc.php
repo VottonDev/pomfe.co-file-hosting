@@ -12,7 +12,7 @@ define('POMF_FILES_ROOT', '/home/lolihook/www-data/pomfe/files/');
 // Maximum number of iterations while generating a new name
 define('POMF_FILES_RETRIES', 15);
 // URL to prepend to output (include trailing slash)
-define('POMF_URL', 'https://pomfe.co/files/');
+define('POMF_URL', 'https://a.pomfe.co/');
 
 $doubledots = array_map('strrev', array(
 	'tar.gz',
