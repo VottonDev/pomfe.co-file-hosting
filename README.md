@@ -1,19 +1,19 @@
 # pomfe.co
-pomfe.co source
 
-Running on nginx instead of apache2 now.
+Pomfe.co's Source Code
+Running on Nginx instead of apache now!
 
-<h1>What you need for this source:</h1>
-<ul>nginx (recommended) or apache2</ul>
-<ul>PHP</ul>
-<ul>MySQL</ul>
+# What you need for this source:
+* Nginx --> http://nginx.org/en/ (Recommended)
+* PHP --> http://php.net/PHP
+* MySQL --> https://www.mysql.com
+* Apache 2 --> https://httpd.apache.org/ (Optional)
 
-<p>This readme looks like trash but it still tells the basic stuff.</p>
 
-<h1>Basic Credits</h1>
-<ul>CSS done by Nekunekus & bohrmeista</ul>
-<ul>Source itself Nekunekus (https://github.com/nokonoko/Pomf)</ul>
+# Credits
+* CSS done by Nekunekus & Bohrmeista
+* Source itself Nekunekus (https://github.com/nokonoko/Pomf)
 
-<h1>Extra Stuff you need to know</h1>
-<p>Remember to block php executing.</p>
-<p>You can make cron jobs to remove logs automaticly if you want.</p>
+# Notes
+* Remember to block php executing.
+* You can make cron jobs to remove logs automaticly if you want.
