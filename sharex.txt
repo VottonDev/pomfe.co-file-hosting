@@ -8,7 +8,7 @@
 "RegexList": [
 "\"url\":\"(?:.+\\\\/)?(.*?)\""
 ],
-"URL": "https://pomfe.co/files/$1,1$",
+"URL": "https://a.pomfe.co/$1,1$",
 "ThumbnailURL": "",
 "DeletionURL": ""
 }
