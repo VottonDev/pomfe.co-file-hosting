@@ -14,5 +14,9 @@ Pomfe.co's Source Code
 
 # Notes
 * Remember to block php executing.
-* You can make cron jobs to remove logs automaticly if you want.
+* You can make cron jobs to remove logs automatically if you want.
 * This works in Apache2 too.
+
+# Apache2 users.
+If you are running Apache and want to compress your output when serving files, add to your .htaccess file:
+AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/x-javascript application/json
