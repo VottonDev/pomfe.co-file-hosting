@@ -19,4 +19,4 @@ Pomfe.co's Source Code
 
 # Apache2 users.
 If you are running Apache and want to compress your output when serving files, add to your .htaccess file:
-AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/x-javascript application/json
+```AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/x-javascript application/json```
