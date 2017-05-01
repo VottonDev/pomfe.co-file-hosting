@@ -1,7 +1,5 @@
 ![pomfe.co](https://a.pomfe.co/fvdylpx.png)
 
-Pomfe.co's Source Code
-
 # What you need for this source:
 * Nginx --> https://nginx.org/en/ (Recommended Web Server)
 * Apache2 https://httpd.apache.org/ (Alternative Web Server)
