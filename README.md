@@ -13,6 +13,7 @@
 # Credits
 * CSS done by Nekunekus & Bohrmeista
 * Source itself Nekunekus (https://github.com/nokonoko/Pomf)
+* Slight modifications done by myself (https://github.com/VottonDev)
 
 # Tips
 * Remember to block php executing.
