@@ -1,4 +1,4 @@
-![pomfe.co](https://a.pomfe.co/fvdylpx.png)
+![pomfe.co](https://a.pomfe.co/emlusbu.png)
 
 # What you need for this source:
 * Nginx --> https://nginx.org/en/ (Recommended Web Server)
