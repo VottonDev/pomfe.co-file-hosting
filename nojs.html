@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>&middot; Pomfe.co&middot;</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="pomf.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 onclick="moon()" id="ohayou">Ohay&#x14D;!</h1>
+      <p class="lead">100MiB's the Limit</p>
+      <p id="no-file-api" class="alert alert-error"><strong>This site requires some cool Web 2.0 stuff</strong> Install the latest<a href="http://firefox.com/">Firefox</a> or <a href="http://chrome.google.com/">Botnet</a> and come back &lt;3</p>
+      <form enctype="multipart/form-data" method="post" action="upload.php?output=html">
+        <input type="file" name="files[]" multiple data-max-size="100MiB">
+        <input type="submit" value="Submit">
+      </form>
+      <ul id="upload-filelist"></ul>
+      <nav>
+        <ul>
+          <li><a href="/faq.html"><i class="navicon ion-help-circled"></i></a></li>
+          <li><a href="/tools.html"><i class="navicon ion-wand"></i></a></li>
+          <li><a href="https://github.com/VottonDev/pomfe.co"><i class="navicon ion-social-github"></i></a></li>
+          <li><a href="https://twitter.com/VottonDev"><i class="navicon ion-social-twitter"></i></a>
+            <li><a href="https://transparency.pomfe.co/"><i class="navicon ion-android-folder"></i></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</body>
+
+</html>
