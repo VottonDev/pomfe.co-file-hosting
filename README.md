@@ -19,7 +19,7 @@
 
 # Credits
 * Pomf done by Nekunekus (https://github.com/nokonoko/Pomf)
-* CSS modifications done by bohrmeista & Votton
+* Modifications done by bohrmeista & Votton
 
 # Tips
 * Remember to block php execution in your NGINX/Apache2/Caddy Host Block.
