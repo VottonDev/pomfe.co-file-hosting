@@ -11,6 +11,7 @@
 # How do you install this?
 * You drag all the files to your "root directory" of the website.
 * Run sudo chown -R www-data:www-data /var/www/domain.com/html/files
+* Import "update.sql" into your MySQL Database.
 * Setup the MySQL config at /includes/ folder.
 * Modify the JavaScript file to change the upload output "a.pomfe.co"
 * Try uploading a file and see if it pops up at MySQL database and see if you are able to open the file in the first place.
