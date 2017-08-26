@@ -160,16 +160,8 @@ a.donate-btn:hover {
     margin-top: 1px
 }
 
-.icon-paypal {
-    background-image: url(https://pomfe.co/img/paypal.png)
-}
-
 .icon-bitcoin {
-    background-image: url(https://pomfe.co/img/bitcoin.png)
-}
-
-.icon-flattr {
-    background-image: url(https://pomfe.co/img/flattr.png)
+    background-image: url(img/bitcoin.png)
 }
 
 nav a,nav>ul {
