@@ -14,14 +14,14 @@
 * Try uploading a file: see if it adds a row into your MySQL database and try to open the file.
 
 # Credits
-* Pomf done by Nekunekus (https://github.com/nokonoko/Pomf)
-* Modifications done by bohrmeista & Votton.
+* Pomf done by [Nekunekus](https://github.com/nokonoko/Pomf)
+* Modifications done by Bohrmeista & Votton.
 
 # Tips
 * Remember to block the execution of PHP code on your web server.
-* You can make cron jobs to remove logs automatically. (https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-on-a-vps)
-* You can get a free SSL using Let's Encrypt's Certbot or CloudFlare's SSL Solution. (https://certbot.eff.org/#ubuntutyakkety-nginx)
+* You can make cron jobs to remove logs [automatically](https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-on-a-vps). 
+* You can get a free SSL using Let's Encrypt's [Certbot](https://certbot.eff.org/#ubuntutyakkety-nginx) or CloudFlare's SSL Solution. 
 
 # Helpful resources:
-* phpMyAdmin --> https://www.phpmyadmin.net/ (Easier to manage MySQL)
-* Caddy --> https://caddyserver.com/ (Alternative Web Server & Automatic SSL)
+* [phpMyAdmin](https://www.phpmyadmin.net/) - Easier to manage MySQL
+* [Caddy](https://caddyserver.com/) - Alternative Web Server & Automatic SSL
