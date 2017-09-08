@@ -6,6 +6,12 @@ php:
   - '7.1'
   - 'nightly'
 
+before_script:
+  - pear install pear/PHP_CodeSniffer
+  - phpenv rehash
+  - nvm install 7.7.1
+
+  
+
 script:
-  - phpunit
-  - php coverage-checker.php clover.xml 75
+  - vendor/bin/phpunit --coverage-text
