@@ -11,7 +11,7 @@
   <meta property=og:locale content=en-US />
   <title>&middot; Pomfe.co&middot;</title>
   <link rel="shortcut icon" href=favicon.ico type="image/x-icon">
-  <link rel="stylesheet" href="pomf.min.css">
+  <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
 </head>
 
@@ -19,24 +19,19 @@
   <div class=container>
     <div class=jumbotron>
       <h1>Ohay&#x14D;!</h1>
-      <p class=lead>100MiBs the Limit</p><noscript><p class="alert alert-error"><strong>Enable JavaScript</strong> Here is a non javascript version of the website: <a href="https://pomfe.co/nojs.html">https://pomfe.co/nojs.html</a></p></noscript>
+      <p class=lead>100MiBs the Limit</p><noscript><p class="alert alert-error"><strong>Please Enable JavaScript</strong> Here is a non javascript version of the website as a other choice: <a href="https://pomfe.co/nojs.html">https://pomfe.co/nojs.html</a></p></noscript>
       <p id=no-file-api class="alert alert-error"><strong>This site requires some cool Web 2.0 stuff</strong> Install the latest<a href="https://firefox.com/">Firefox</a> or <a href="https://chrome.google.com/">Botnet</a> and come back &lt;3</p><a href="javascript:;" id=upload-btn class=btn>Select <span>or drop</span> file(s)</a>
       <input type=file id=upload-input name="files[]" multiple data-max-size=100MiB>
       <ul id=upload-filelist></ul>
-      <nav>
-	<ul>
-<li><a href="https://pomfe.co/faq"><i class="fa fa-question"></i></a></li>
-<li><a href="https://pomfe.co/tools"><i class="fa fa-wrench"></i></a></li>
-<li><a href="https://github.com/VottonDev/pomfe.co"><i class="fa fa-github"></i></a></li>
-<li><a href="https://twitter.com/Votton"><i class="fa fa-twitter"></i></a>
-<li><a href="https://transparency.pomfe.co"><i class="fa fa-folder-open-o"></i></a></li>
-<li><a href="https://paste.pomfe.co"><i class="fa fa-clipboard" aria-hidden="true"></i></a></li>
-	</ul>
-</nav>
 
     </div>
     <script async src=pomf.min.js></script>
   </div>
+
+  <div class="footer">
+    <?php include('global/footer.html'); ?>
+  </div>
+
 </body>
 
 </html>

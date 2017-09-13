@@ -10,7 +10,7 @@ body,button {
 
 body {
     background-attachment: fixed,fixed;
-    background-image: url(grill.php);
+    background-image: url(../grill.php);
     background-position: 85% 100%,top left;
     background-repeat: no-repeat,repeat;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -59,7 +59,7 @@ a:focus {
 }
 
 .jumbotron {
-    margin: 60px 0;
+    margin: 80px;
     text-align: center;
     transition: width .5s,height .5s,margin .5s,padding .5s
 }
@@ -82,6 +82,7 @@ a:focus {
     margin-bottom: 20px;
     transition: font-size .5s
 }
+
 
 .jumbotron .btn {
     background: 0 0 #dd4b39;
@@ -161,7 +162,7 @@ a.donate-btn:hover {
 }
 
 .icon-bitcoin {
-    background-image: url(img/bitcoin.png)
+    background-image: url(../img/bitcoin.png)
 }
 
 nav a,nav>ul {
@@ -374,6 +375,44 @@ section.ded {
 
     .alert-error {
         background-color: rgba(248,223,223,.75)
+    }
+
+    .footer {
+        margin: 20px 0px 0px 0px;
+        padding: 20px 0px;
+        width: 100%;
+        clear: both;
+    }
+
+    .footer ul>li:last-child {
+        border-right: none;
+    }
+
+    .footer ul, .footer a {
+        color:#23272A;
+        list-style:none;
+        margin:0;
+        padding:0;
+        text-align:center;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .footer a:hover {
+        color:#333544;
+    }
+
+    .footer ul>li {
+        display:inline-block;
+        margin:0;
+        padding:0px 5px 0px 5px;
+        cursor:default;
+    }
+
+    .footer .footer-bot,.footer .footer-bot a {
+        color: #23272A;
+        font-size: 12px;
+        font-weight: 400;
     }
 
     nav {
