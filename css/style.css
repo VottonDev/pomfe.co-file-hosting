@@ -9,10 +9,6 @@ body,button {
 }
 
 body {
-    background-attachment: fixed,fixed;
-    background-image: url(grill.php);
-    background-position: 85% 100%,top left;
-    background-repeat: no-repeat,repeat;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     height: 100%;
@@ -20,13 +16,12 @@ body {
     margin: 0;
     padding-top: 20px;
     padding-bottom: 40px;
-    background-color: #2d2d2d
+    background: #2d2d2d url(../grill.php) no-repeat, repeat fixed, fixed 85% 100%, top left;
 }
 
 button {
     border-radius: 2px;
-    border-width: 1px;
-    border-color: #222;
+    border: 1px #222;
     background-color: #222;
     margin-left: 10px
 }
@@ -161,7 +156,7 @@ a.donate-btn:hover {
 }
 
 .icon-bitcoin {
-    background-image: url(img/bitcoin.png)
+    background-image: url(../img/bitcoin.png)
 }
 
 nav a,nav>ul {
