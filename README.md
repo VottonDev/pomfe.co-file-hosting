@@ -16,6 +16,7 @@
 # Credits
 * Pomf done by [Nekunekus](https://github.com/nokonoko/Pomf)
 * Modifications done by Bohrmeista & Votton.
+* Design modifications that got inspired from bakka.me
 
 # Tips
 * Remember to block the execution of PHP code on your web server.
