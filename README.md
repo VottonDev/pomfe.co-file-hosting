@@ -1,4 +1,4 @@
-![pomfe.co](https://a.pomfe.co/ipenrfb.png)
+![pomfe.co](https://user-images.githubusercontent.com/5682352/31862356-6f47d7f6-b734-11e7-8f4f-8d4263c8cef0.png)
 
 # Requirements
 * A web server (Nginx or Apache)
