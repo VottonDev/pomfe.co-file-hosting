@@ -108,8 +108,8 @@ function upload_file ($file) {
 	$dispIn->bindParam(":msg", $mNum);
 	$dispIn->execute();
 	
-	if (substr($mNum, 0, 4) == "4d5a" || $mNum == "89504e47") {
-		Throw new Exception("File detected as an EXE/SCR, aborting!", 500);	
+	if (substr($mNum, 0, 4) == "4d5a") {
+		Throw new Exception("File detected as an EXE, aborting!", 500);	
 	}
 
 	// Attempt to move it to the static directory
