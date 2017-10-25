@@ -94,15 +94,12 @@ function upload_file ($file) {
 	// Generate a name for the file
 	$newname = generate_name($file);
 	$tmp = $file->tempfile;
-	$finfo = finfo_open(FILEINFO_MIME_TYPE); // return mime type ala mimetype extension
-	    $mime = finfo_file($finfo, $filename);
-	    if ($mime == "image/jpeg") {
-		  $imgInfo = getimagesize($tmp);
-		  if ($imgInfo == false) {
-			throw new Exception('Nope', 500);	  
-		  }
-	    }
-	finfo_close($finfo);
+	$openedFile = fopen($_FILES['file']['tmp_name'],"r");
+	$mNum = bin2hex(fread($openedFile, 4));
+	if ($mNum == "4d5a") {
+		throw new Exception("Magic", 500);	
+	}
+	
 
 	
 		// Attempt to move it to the static directory
