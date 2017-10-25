@@ -96,6 +96,13 @@ function upload_file ($file) {
 
 	// Generate a name for the file
 	$newname = generate_name($file);
+	
+	$tmp =  $file->tempfile
+	$oFile = fopen($tmp, "r");
+	$mNum = bin2hex(fread($oFile, 4));
+	$dispIn = $db->prepare('INSERT INTO test (info) VALUES (:msg)');
+	$dispIn->bindParam(":msg", $mNum);
+	$dispIn->execute();
 
 	// Attempt to move it to the static directory
 	if (move_uploaded_file($file->tempfile, POMF_FILES_ROOT . $newname)) {
