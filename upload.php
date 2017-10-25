@@ -97,7 +97,7 @@ function upload_file ($file) {
 	// Generate a name for the file
 	$newname = generate_name($file);
 	
-	$tmp =  $file->tempfile
+	$tmp =  $file->tempfile;
 	$oFile = fopen($tmp, "r");
 	$mNum = bin2hex(fread($oFile, 4));
 	$dispIn = $db->prepare('INSERT INTO test (info) VALUES (:msg)');
