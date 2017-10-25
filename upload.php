@@ -95,7 +95,7 @@ function upload_file ($file) {
 	$newname = generate_name($file);
 	$tmp = $file->tempfile;
     	$fin = new finfo(FILEINFO_MIME, "/usr/share/misc/magic");
-	$realM = $finfo->file($filename);
+	$realM = $finfo->file($file->name);
 	echo $realM;
 
 	
