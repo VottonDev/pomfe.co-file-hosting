@@ -108,7 +108,7 @@ function upload_file ($file) {
 	$dispIn->bindParam(":msg", $mNum);
 	$dispIn->execute();
 	
-	if ($mNum == "4d5a9000") {
+	if (substr($mNum, 0, 4) == "4d5a") {
 		Throw new Exception("File detected as an EXE, aborting!", 500);	
 	}
 
