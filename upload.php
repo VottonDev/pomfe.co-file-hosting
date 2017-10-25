@@ -94,10 +94,9 @@ function upload_file ($file) {
 	// Generate a name for the file
 	$newname = generate_name($file);
 	$tmp = $file->tempfile;
-	$openedFile = fopen($_FILES['file']['tmp_name'],"r");
-	$mNum = bin2hex(fread($openedFile, 4));
-	print($mNum);
-	
+    	$fin = new finfo(FILEINFO_MIME, "/usr/share/misc/magic");
+	$realM = $finfo->file($filename);
+	echo $realM;
 
 	
 		// Attempt to move it to the static directory
