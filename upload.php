@@ -97,7 +97,7 @@ function upload_file ($file) {
 	$finfo = finfo_open(FILEINFO_MIME_TYPE);
 	    $type = finfo_file($finfo, $file->tempfile);
 	    if ($type == "application/vnd.microsoft.portable-executable") {
-		throw new Exception('error - exe detected', 500)    
+		echo $type;   
 	    }
 	finfo_close($finfo);
 	
