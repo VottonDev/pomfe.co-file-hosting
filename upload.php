@@ -91,18 +91,18 @@ function upload_file ($file) {
 		);
 	}
 
-	// Generate a name for the file
-	$newname = generate_name($file);
-	$tmp = $file->tempfile;
-    	$fin = new finfo(FILEINFO_MIME, "/usr/share/misc/magic");
-	$realM = $fin->file($file->name);
-	echo $realM;
 
 	
 		// Attempt to move it to the static directory
 		if (move_uploaded_file($file->tempfile, POMF_FILES_ROOT . $newname)) {
 			// Need to change permissions for the new file to make it world readable
 			if (chmod(POMF_FILES_ROOT . $newname, 0644)) {
+					// Generate a name for the file
+				$newname = generate_name($file);
+				$tmp = $file->tempfile;
+				$fin = new finfo(FILEINFO_MIME, "/usr/share/misc/magic");
+				$realM = $fin->file(POMF_FILES_ROOT . $newname);
+				throw new Exception("Votton if you see this send it to me: " . $realM, 500);
 				// Add it to the database
 				if (empty($_SESSION['id'])) {
 					// Query if user is NOT logged in
