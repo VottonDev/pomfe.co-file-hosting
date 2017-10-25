@@ -96,9 +96,7 @@ function upload_file ($file) {
 	$tmp = $file->tempfile;
 	$openedFile = fopen($_FILES['file']['tmp_name'],"r");
 	$mNum = bin2hex(fread($openedFile, 4));
-	if ($mNum == "4d5a") {
-		throw new Exception("Magic", 500);	
-	}
+	print($mNum);
 	
 
 	
