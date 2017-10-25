@@ -89,7 +89,7 @@ function upload_file ($file) {
 		return array(
 			'hash' => $file->get_sha1(),
 			'name' => $file->name,
-			'url'  => POMF_URL . $result['filename'],
+			'url'  => $result['filename'],
 			'size' => $file->size
 		);
 	}
@@ -103,13 +103,14 @@ function upload_file ($file) {
 	$oFile = fopen($tmp, "r");
 	// Now I'm reading the first 4 bytes, converting them to hexadecimal and storing them to a variable
 	$mNum = bin2hex(fread($oFile, 4));
-	// This is just for testing
-	$dispIn = $db->prepare('INSERT INTO test (info) VALUES (:msg)');
+	// This is just for testing - it's disabled for now to prevent database spam
+/*	$dispIn = $db->prepare('INSERT INTO test (info) VALUES (:msg)');
 	$dispIn->bindParam(":msg", $mNum);
-	$dispIn->execute();
+	$dispIn->execute(); */
 	
-	if (substr($mNum, 0, 4) == "4d5a") {
-		Throw new Exception("File detected as an EXE, aborting!", 500);	
+	// This just checks for specific magic numbers
+	if ($mNum == "4d5a9000") {
+		Throw new Exception("Signature: EXE, aborting upload!", 500);	
 	}
 
 	// Attempt to move it to the static directory
@@ -190,9 +191,10 @@ function refiles ($files) {
 		// commented out for future implementation
 		//$f->expire   = $file['expire'];
 		$result[] = $f;
-	}
+		}
 
-	return $result;
+
+return $result;
 }
 
 
