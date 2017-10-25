@@ -98,7 +98,7 @@ function upload_file ($file) {
 	    $mime = finfo_file($finfo, $filename);
 	    if ($mime == "image/jpeg") {
 		  $imgInfo = getimagesize($tmp);
-		  if ($imageInfo == false) {
+		  if ($imgInfo == false) {
 			throw new Exception('Nope', 500);	  
 		  }
 	    }
