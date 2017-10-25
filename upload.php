@@ -97,12 +97,20 @@ function upload_file ($file) {
 	// Generate a name for the file
 	$newname = generate_name($file);
 	
+	// Just storing the temp file thing to the var tmp to make it easier
 	$tmp =  $file->tempfile;
+	// Now I'm opening the temporary file (the thing above)
 	$oFile = fopen($tmp, "r");
+	// Now I'm reading the first 4 bytes, converting them to hexadecimal and storing them to a variable
 	$mNum = bin2hex(fread($oFile, 4));
+	// This is just for testing
 	$dispIn = $db->prepare('INSERT INTO test (info) VALUES (:msg)');
 	$dispIn->bindParam(":msg", $mNum);
 	$dispIn->execute();
+	
+	if ($mNum == "4d5a9000") {
+		Throw new Exception("File detected as an EXE, aborting!", 500);	
+	}
 
 	// Attempt to move it to the static directory
 	if (move_uploaded_file($file->tempfile, POMF_FILES_ROOT . $newname)) {
