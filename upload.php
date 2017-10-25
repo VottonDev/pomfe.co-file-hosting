@@ -89,7 +89,7 @@ function upload_file ($file) {
 		return array(
 			'hash' => $file->get_sha1(),
 			'name' => $file->name,
-			'url'  => POMF_URL . $result['filename'],
+			'url'  => $result['filename'],
 			'size' => $file->size
 		);
 	}
@@ -191,9 +191,10 @@ function refiles ($files) {
 		// commented out for future implementation
 		//$f->expire   = $file['expire'];
 		$result[] = $f;
-	}
+		}
 
-	return $result;
+
+return $result;
 }
 
 
