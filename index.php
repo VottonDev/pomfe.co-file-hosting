@@ -9,9 +9,10 @@
   <meta property=og:title content="Pomfe.co - File Hosting" />
   <meta property=og:site_name content=Pomfe.co />
   <meta property=og:locale content=en-US />
-  <title>&middot; Pomfe.co&middot;</title>
+  <title>&middot; Pomfe.co &middot;</title>
   <link rel="shortcut icon" href=favicon.ico type="image/x-icon">
   <link rel="stylesheet" href="css/style.css">
+  <script async src=pomf.min.js></script>
 </head>
 
 <body>
@@ -29,7 +30,9 @@
             <?php include('global/footer.html'); ?>
         </div>
 
-        <script async src=pomf.min.js></script>
+        <p class="alert alert-info">
+        <strong>Pomfe.co is a free service and we intend to keep it this way, but we need your help</strong> &mdash; we here at Pomfe want to keep any and all donations transparent, as a proof of concept, we need exactly 10$ each month to pay for our bills and keep this service free forever. As a donator, you'll receive 100% transparency on the money you donate, whether it's upgrades, monthly bills or other expenses. You can help us by donating via Patreon or Bitcoin, thanks a lot!
+<span class="donate-btns"><a class="donate-btn donate-bitcoin" href="bitcoin:1Jx1PSYdqwrhtYGhUvVvYZRfKScHQ9VLRH?label=tpb.lc&amp;message=Hosting%20Bills" target="_BLANK"><span class="icon icon-bitcoin"></span> Bitcoin</a><a class="donate-btn donate-patreon" href="https://www.patreon.com/Votton" target="_BLANK"><span class="icon icon-patreon"></span> Patreon</a></div>
 
   <div class="background-img"></div>
 </body>
