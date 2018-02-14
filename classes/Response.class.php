@@ -1,98 +1,241 @@
 <?php
+/**
+ * The Response class is a do-it-all for getting responses out in different
+ * formats.
+ *
+ * @todo Create sub-classes to split and extend this god object.
+ */
+class Response
+{
+    /**
+     * Indicates response type used for routing.
+     *
+     * Valid strings are 'csv', 'html', 'json' and 'text'.
+     *
+     * @var string $type Response type
+     */
+    private $type;
 
-class Response {
-	private $type;
+    /**
+     * Indicates requested response type.
+     *
+     * Valid strings are 'csv', 'html', 'json', 'gyazo' and 'text'.
+     *
+     * @param string|null $response_type Response type
+     */
+    public function __construct($response_type = null)
+    {
+        switch ($response_type) {
+            case 'csv':
+                header('Content-Type: text/csv; charset=UTF-8');
+                $this->type = $response_type;
+                break;
+            case 'html':
+                header('Content-Type: text/html; charset=UTF-8');
+                $this->type = $response_type;
+                break;
+            case 'json':
+                header('Content-Type: application/json; charset=UTF-8');
+                $this->type = $response_type;
+                break;
+            case 'gyazo':
+                header('Content-Type: text/plain; charset=UTF-8');
+                $this->type = 'text';
+                break;
+            case 'text':
+                header('Content-Type: text/plain; charset=UTF-8');
+                $this->type = $response_type;
+                break;
+            default:
+                header('Content-Type: application/json; charset=UTF-8');
+                $this->type = 'json';
+                $this->error(400, 'Invalid response type. Valid options are: csv, html, json, text.');
+                break;
+        }
+    }
 
-	public function __construct ($response_type = null) {
-		switch ($response_type) {
-			case 'csv':
-			case 'gyazo':
-				header('Content-Type: text/plain; charset=UTF-8');
-				$this->type = $response_type;
-				break;
-			default:
-				header('Content-Type: application/json; charset=UTF-8');
-				$this->type = 'json';
-				break;
-		}
-	}
+    /**
+     * Routes error messages depending on response type.
+     *
+     * @param int $code HTTP status code number.
+     * @param int $desc Descriptive error message.
+     * @return void
+     */
+    public function error($code, $desc)
+    {
+        $response = null;
 
-	public function error ($code, $desc) {
-		$response = null;
+        switch ($this->type) {
+            case 'csv':
+                $response = $this->csvError($desc);
+                break;
+            case 'html':
+                $response = $this->htmlError($code, $desc);
+                break;
+            case 'json':
+                $response = $this->jsonError($code, $desc);
+                break;
+            case 'text':
+                $response = $this->textError($code, $desc);
+                break;
+        }
 
-		switch ($this->type) {
-			case 'csv':
-				$response = $this->csv_error($desc);
-				break;
-			case 'gyazo':
-				$response = $this->gyazo_error($code, $desc);
-				break;
-			default:
-				$response = $this->json_error($code, $desc);
-				break;
-		}
+        http_response_code(500); // "500 Internal Server Error"
+        echo $response;
+    }
 
-		http_response_code($code);
-		echo $response;
-	}
+    /**
+     * Routes success messages depending on response type.
+     *
+     * @param mixed[] $files
+     * @return void
+     */
+    public function send($files)
+    {
+        $response = null;
 
-	public function send ($files) {
-		$response = null;
+        switch ($this->type) {
+            case 'csv':
+                $response = $this->csvSuccess($files);
+                break;
+            case 'html':
+                $response = $this->htmlSuccess($files);
+                break;
+            case 'json':
+                $response = $this->jsonSuccess($files);
+                break;
+            case 'text':
+                $response = $this->textSuccess($files);
+                break;
+        }
 
-		switch ($this->type) {
-			case 'csv':
-				$response = $this->csv_success($files);
-				break;
-			case 'gyazo':
-				$response = $this->gyazo_success($files);
-				break;
-			default:
-				$response = $this->json_success($files);
-				break;
-		}
+        http_response_code(200); // "200 OK". Success.
+        echo $response;
+    }
 
-		http_response_code(200);
-		echo $response;
-	}
+    /**
+     * Indicates with CSV body the request was invalid.
+     *
+     * @deprecated 2.1.0 Will be renamed to camelCase format.
+     * @param int $description Descriptive error message.
+     * @return string Error message in CSV format.
+     */
+    private static function csvError($description)
+    {
+        return '"error"'."\r\n"."\"$description\""."\r\n";
+    }
 
-	private static function csv_error ($description) {
-		return "error\n" . $description . "\n";
-	}
+    /**
+     * Indicates with CSV body the request was successful.
+     *
+     * @deprecated 2.1.0 Will be renamed to camelCase format.
+     * @param mixed[] $files
+     * @return string Success message in CSV format.
+     */
+    private static function csvSuccess($files)
+    {
+        $result = '"name","url","hash","size"'."\r\n";
+        foreach ($files as $file) {
+            $result .= '"'.$file['name'].'"'.','.
+                '"'.$file['url'].'"'.','.
+                '"'.$file['hash'].'"'.','.
+                '"'.$file['size'].'"'."\r\n";
+        }
 
-	private static function csv_success ($files) {
-		$result = "name,url,hash,size\n";
-		foreach ($files as $file) {
-			$result .= $file['name'] . "," .
-			           $file['url']  . "," .
-			           $file['hash'] . "," .
-			           $file['size'] . "\n";
-		}
+        return $result;
+    }
 
-		return $result;
-	}
+    /**
+     * Indicates with HTML body the request was invalid.
+     *
+     * @deprecated 2.1.0 Will be renamed to camelCase format.
+     * @param int $code HTTP status code number.
+     * @param int $description Descriptive error message.
+     * @return string Error message in HTML format.
+     */
+    private static function htmlError($code, $description)
+    {
+        return '<p>ERROR: ('.$code.') '.$description.'</p>';
+    }
 
-	private static function gyazo_error ($code, $description) {
-		return "ERROR: (" . $code . ") " . $description;
-	}
+    /**
+     * Indicates with HTML body the request was successful.
+     *
+     * @deprecated 2.1.0 Will be renamed to camelCase format.
+     * @param mixed[] $files
+     * @return string Success message in HTML format.
+     */
+    private static function htmlSuccess($files)
+    {
+        $result = '';
 
-	private static function gyazo_success ($files) {
-		return POMF_URL . $files[0]['url'];
-	}
+        foreach ($files as $file) {
+            $result .=  '<a href="'.$file['url'].'">'.$file['url'].'</a><br>';
+        }
 
-	private static function json_error ($code, $description) {
-		return json_encode(array(
-			'success'     => false,
-			'errorcode'   => $code,
-			'description' => $description
-		));
-	}
+        return $result;
+    }
 
-	private static function json_success ($files) {
-		return json_encode(array(
-			'success' => true,
-			'files'   => $files
-		));
-	}
+    /**
+     * Indicates with JSON body the request was invalid.
+     *
+     * @deprecated 2.1.0 Will be renamed to camelCase format.
+     * @param int $code HTTP status code number.
+     * @param int $description Descriptive error message.
+     * @return string Error message in pretty-printed JSON format.
+     */
+    private static function jsonError($code, $description)
+    {
+        return json_encode(array(
+            'success' => false,
+            'errorcode' => $code,
+            'description' => $description,
+        ), JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Indicates with JSON body the request was successful.
+     *
+     * @deprecated 2.1.0 Will be renamed to camelCase format.
+     * @param mixed[] $files
+     * @return string Success message in pretty-printed JSON format.
+     */
+    private static function jsonSuccess($files)
+    {
+        return json_encode(array(
+            'success' => true,
+            'files' => $files,
+        ), JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Indicates with plain text body the request was invalid.
+     *
+     * @deprecated 2.1.0 Will be renamed to camelCase format.
+     * @param int $code HTTP status code number.
+     * @param int $description Descriptive error message.
+     * @return string Error message in plain text format.
+     */
+    private static function textError($code, $description)
+    {
+        return 'ERROR: ('.$code.') '.$description;
+    }
+
+    /**
+     * Indicates with plain text body the request was successful.
+     *
+     * @deprecated 2.1.0 Will be renamed to camelCase format.
+     * @param mixed[] $files
+     * @return string Success message in plain text format.
+     */
+    private static function textSuccess($files)
+    {
+        $result = '';
+
+        foreach ($files as $file) {
+            $result .= $file['url']."\n";
+        }
+
+        return $result;
+    }
 }
-
-?>
