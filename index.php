@@ -16,8 +16,7 @@
 </head>
 
 <body>
-
-<div class="layer">
+  
 <div class=container>
     <div class=jumbotron>
         <h1>Ohay&#x14D;!</h1>
