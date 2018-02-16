@@ -1,4 +1,4 @@
-![pomfe.co](https://user-images.githubusercontent.com/5682352/31862356-6f47d7f6-b734-11e7-8f4f-8d4263c8cef0.png)
+![pomfe.co](https://user-images.githubusercontent.com/5682352/36320287-92139be8-133d-11e8-880b-8dfcdc05225a.png)
 
 # Requirements
 * A web server (Nginx or Apache)
@@ -15,7 +15,6 @@
 # Credits
 * Pomf done by [Nekunekus](https://github.com/nokonoko/Pomf)
 * Modifications done by Bohrmeista & Votton.
-* Design modifications that got inspired from bakka.me
 
 # Tips
 * Remember to block the execution of PHP code on your web server.
