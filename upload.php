@@ -156,17 +156,17 @@ function uploadFile($file)
     }
 
     // Add it to the database
-    if (empty($_SESSION['id'])) {
-        // Query if user is NOT logged in
-        $q = $db->prepare('INSERT INTO files (hash, originalname, filename, size, date, ' .
-            'expire, delid) VALUES (:hash, :orig, :name, :size, :date, ' .
-            ':exp, :del)');
-    } else {
+    if (isset($_SESSION['email']) && $_COOKIE['IsAnon'] == "False") {
         // Query if user is logged in (insert user id together with other data)
         $q = $db->prepare('INSERT INTO files (hash, originalname, filename, size, date, ' .
             'expire, delid, user) VALUES (:hash, :orig, :name, :size, :date, ' .
             ':exp, :del, :user)');
-        $q->bindValue(':user', $_SESSION['id'], PDO::PARAM_INT);
+        $q->bindValue(':user', $_SESSION['email'], PDO::PARAM_STR);
+    } else {
+        // Query if user is NOT logged in
+        $q = $db->prepare('INSERT INTO files (hash, originalname, filename, size, date, ' .
+            'expire, delid) VALUES (:hash, :orig, :name, :size, :date, ' .
+            ':exp, :del)');
     }
 
     // Common parameters binding
