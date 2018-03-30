@@ -85,10 +85,15 @@ function uploadFile($file)
         throw new UploadException($file->error);
     }
 
-    if ($file->size > $_SESSION['Max_Upload'] * 1048576) {
-        throw new UploadException("File is beyond user max upload limit");
+    $max_size = 100;
+    if (isset($_SESSION['Max_Upload'])) {
+        $max_size = $_SESSION['Max_Upload'];
     }
+    $max_size = $max_size * 1048576;
 
+    if ($file->size > $max_size) {
+            throw new UploadException("File is beyond user max upload limit");
+    }
     // Check if mime type is blocked
     if (!empty($FILTER_MIME)) {
         if ($FILTER_MODE == true) { //whitelist mode
