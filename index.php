@@ -86,8 +86,10 @@ if (isset($_SESSION['level'])) {
         </div>
 
         <p class="alert alert-info">
-            <strong>Pomfe.co is a free service, but our hosting bill isn't</strong> &mdash; we need exactly 35$ each month to pay for our bills and keep this service free forever. As a donator, you'll receive 100% transparency on the money you donate, whether it's upgrades, monthly bills or other expenses. Thanks a lot!
-            <span class="donate-btns"><a class="donate-btn donate-bitcoin" href="bitcoin:1Jx1PSYdqwrhtYGhUvVvYZRfKScHQ9VLRH?label=tpb.lc&amp;message=Hosting%20Bills" target="_BLANK"><span class="icon icon-bitcoin"></span> Bitcoin</a><a class="donate-btn donate-patreon" href="https://www.patreon.com/Votton" target="_BLANK"><span class="icon icon-patreon"></span> Patreon</a></div>
+            <strong>Want to see all of your files? Delete them? Or, want a higher upload limit?</strong>
+            <br> Well now you can!! We have just recently released a user panel, which allows you to do those things with <strong>many</strong> more features on their way.<br> 
+            <br>So: what are you waiting for? Sign up now!
+            <br><a href="https://cloud.pomfe.co/login.php" target="_BLANK">Log in</a> | <a href="https://cloud.pomfe.co/register.php" target="_BLANK">Register</a></div>
 
 </body>
 
