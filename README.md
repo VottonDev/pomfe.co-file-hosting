@@ -1,3 +1,6 @@
+# Pomfe.co V1
+ * Soon to be discontinued
+
 ![pomfe.co](https://user-images.githubusercontent.com/5682352/36320287-92139be8-133d-11e8-880b-8dfcdc05225a.png)
 
 # Requirements
@@ -11,6 +14,11 @@
 * Import "schema.sql" and "update.sql" into your MySQL Database.
 * Modify "settings.inc.php" inside /includes/.
 * Try uploading a file: see if it adds a row into your MySQL database and try to open the file.
+
+# Add-ons
+Moe Panel: https://github.com/Pomfe/Moe-Panel
+ - The main panel works but reports are broken, and I don’t believe the current pomfe.co source has support for the dynamic upload limits. Also I need to upload some code to support it on this version of pomfe.co.
+ - We discontinued support for Moe Panel quickly as the code is horrible and it ended up working out better for us to build our own panel.
 
 # Credits
 * Pomf done by [Nekunekus](https://github.com/nokonoko/Pomf)
