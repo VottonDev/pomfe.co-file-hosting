@@ -1,5 +1,5 @@
 # Pomfe.co V1
- * Soon to be discontinued
+ * Discontinued project
 
 ![pomfe.co](https://user-images.githubusercontent.com/5682352/36320287-92139be8-133d-11e8-880b-8dfcdc05225a.png)
 
