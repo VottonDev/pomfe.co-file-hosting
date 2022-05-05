@@ -17,6 +17,7 @@ require_once 'includes/database.inc.php';
  * @param UploadedFile $file
  *
  * @return string
+ * @throws Exception
  */
 function generateName($file)
 {
@@ -52,7 +53,7 @@ function generateName($file)
         }
 
         // Add the extension to the file name
-        if (isset($ext) && $ext !== '') {
+        if ($ext !== '') {
             $name .= '.'.$ext;
         }
 
@@ -73,6 +74,8 @@ function generateName($file)
  * @param UploadedFile $file
  *
  * @return array
+ * @throws UploadException
+ * @throws Exception
  */
 function uploadFile($file)
 {
@@ -96,7 +99,7 @@ function uploadFile($file)
     }
     // Check if mime type is blocked
     if (!empty($FILTER_MIME)) {
-        if ($FILTER_MODE == true) { //whitelist mode
+        if ($FILTER_MODE) { //whitelist mode
             if (!in_array($file->mime, $FILTER_MIME)) {
                 throw new UploadException(UPLOAD_ERR_EXTENSION);
             }

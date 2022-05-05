@@ -1,5 +1,7 @@
 {
 	"require": {
-		"phpunit/phpunit": "6.3.*"
-	}
+		"phpunit/phpunit": "6.3.*",
+      "ext-json": "*",
+      "ext-pdo": "*"
+    }
 }

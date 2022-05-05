@@ -37,23 +37,23 @@
  * PDO_MYSQL DSN.
  * @param string POMF_DB_CONN DSN:host|unix_socket=hostname|path;dbname=database
  */
-define('POMF_DB_CONN', 'mysql:unix_socket=/var/run/mysqld/mysqld.sock;dbname=pomf');
+const POMF_DB_CONN = 'mysql:unix_socket=/var/run/mysqld/mysqld.sock;dbname=pomf';
 
 /**
  * PDO database login credentials
  */
 
 /** @param string POMF_DB_NAME Database username */
-define('POMF_DB_USER', 'pomf');
+const POMF_DB_USER = 'pomf';
 /** @param string POMF_DB_PASS Database password */
-define('POMF_DB_PASS', '');
+const POMF_DB_PASS = '';
 
 /**
  * File system location where to store uploaded files
  *
  * @param string Path to directory with trailing delimiter
  */
-define('POMF_FILES_ROOT', '/media/DISK2/www/pomfe.co/html/files/');
+const POMF_FILES_ROOT = '/media/DISK2/www/pomfe.co/html/files/';
 
 /**
  * Maximum number of iterations while generating a new filename
@@ -64,7 +64,7 @@ define('POMF_FILES_ROOT', '/media/DISK2/www/pomfe.co/html/files/');
  *
  * @param int POMF_FILES_RETRIES Number of attempts to retry
  */
-define('POMF_FILES_RETRIES', 15);
+const POMF_FILES_RETRIES = 15;
 
 /**
  * The length of generated filename (without file extension)
@@ -72,21 +72,21 @@ define('POMF_FILES_RETRIES', 15);
  * @param int POMF_FILES_LENGTH Number of random alphabetical ASCII characters
  * to use
  */
-define('POMF_FILES_LENGTH', 6);
+const POMF_FILES_LENGTH = 6;
 
 /**
  * URI to prepend to links for uploaded files
  *
  * @param string POMF_URL URI with trailing delimiter
  */
-define('POMF_URL', 'https://a.pomfe.co/');
+const POMF_URL = 'https://a.pomfe.co/';
 
 /**
  * URI for filename generation
  *
  * @param string characters to be used in generateName()
  */
-define('ID_CHARSET', 'abcdefghijklmnopqrstuvwxyz');
+const ID_CHARSET = 'abcdefghijklmnopqrstuvwxyz';
 
 
 /**

@@ -37,7 +37,6 @@ session_start();
 </head>
 
 <?php
-//echo $_COOKIE['IsAnon'];
 $max_upload = 100;
 $_SESSION['Max_Upload'] = 100;
 if (isset($_SESSION['level'])) {
