@@ -162,6 +162,10 @@ function uploadFile($file)
         if ($result !== true) {
             throw new UploadException(UPLOAD_ERR_MALICIOUS);
         }
+        // Update ClamAV's database
+        $clam->reload();
+        // Shutdown ClamAV
+        $clam->shutdown();
     }
 
     // Store the file's full file path in memory
