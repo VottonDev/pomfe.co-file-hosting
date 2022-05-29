@@ -50,7 +50,7 @@ class UploadException extends Exception
                 $message = 'Failed to write file to disk';
                 break;
             case UPLOAD_ERR_EXTENSION:
-                $message = 'File upload stopped by extension';
+                $message = 'File type not allowed';
                 break;
 
             default:

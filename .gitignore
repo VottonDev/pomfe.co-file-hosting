@@ -1,4 +1,3 @@
 *.xml
 *.iml
-.idea/vcs.xml
-.idea/pomfe.co-redesign.iml
+.idea

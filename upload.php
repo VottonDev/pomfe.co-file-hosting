@@ -95,7 +95,7 @@ function uploadFile($file)
     $max_size = $max_size * 1048576;
 
     if ($file->size > $max_size) {
-            throw new UploadException("File is beyond user max upload limit");
+            throw new UploadException("File exceeds upload limit");
     }
     // Check if mime type is blocked
     if (!empty($FILTER_MIME)) {
@@ -116,13 +116,13 @@ function uploadFile($file)
     // and data. PHP deletes the temporary file just uploaded automatically.
     $q = $db->prepare('SELECT filename, COUNT(*) AS count FROM files WHERE hash = (:hash) '.
         'AND size = (:size)');
-    $q->bindValue(':hash', $file->getSha1(), PDO::PARAM_STR);
+    $q->bindValue(':hash', $file->getSha256(), PDO::PARAM_STR);
     $q->bindValue(':size', $file->size, PDO::PARAM_INT);
     $q->execute();
     $result = $q->fetch();
     if ($result['count'] > 0) {
         return array(
-            'hash' => $file->getSha1(),
+            'hash' => $file->getSha256(),
             'name' => $file->name,
             'url' => POMF_URL.rawurlencode($result['filename']),
             'size' => $file->size,
@@ -143,10 +143,15 @@ function uploadFile($file)
 	$dispIn->bindParam(":msg", $mNum);
 	$dispIn->execute(); */
 	
-	// This just checks for specific magic numbers
-	if ($mNum == "4d5a9000") {
-		Throw new Exception("Signature: EXE, aborting upload!", 500);	
-	}
+	// Block executable files
+    if ($mNum == "4d5a9000") {
+        throw new UploadException(UPLOAD_ERR_EXTENSION);
+    }
+
+    // Block files with a bad header
+    if ($mNum == "4d5a9001") {
+        throw new UploadException(UPLOAD_ERR_EXTENSION);
+    }
 
     // Store the file's full file path in memory
     $uploadFile = POMF_FILES_ROOT . $newname;
@@ -177,12 +182,11 @@ function uploadFile($file)
     } else {
         // Query if user is NOT logged in
         $q = $db->prepare('INSERT INTO files (hash, originalname, filename, size, date, ' .
-            'expire, delid) VALUES (:hash, :orig, :name, :size, :date, ' .
-            ':exp, :del)');
+            'expire, delid) VALUES (:hash, :orig, :name, :size, :date, :exp, :del)');
     }
 
     // Common parameters binding
-    $q->bindValue(':hash', $file->getSha1(), PDO::PARAM_STR);
+    $q->bindValue(':hash', $file->getSha256(), PDO::PARAM_STR);
     $q->bindValue(':orig', strip_tags($file->name), PDO::PARAM_STR);
     $q->bindValue(':name', $newname, PDO::PARAM_STR);
     $q->bindValue(':size', $file->size, PDO::PARAM_INT);
@@ -192,7 +196,7 @@ function uploadFile($file)
     $q->execute();
 
     return array(
-        'hash' => $file->getSha1(),
+        'hash' => $file->getSha256(),
         'name' => $file->name,
         'url' => POMF_URL.rawurlencode($newname),
         'size' => $file->size,

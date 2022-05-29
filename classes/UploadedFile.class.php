@@ -10,23 +10,27 @@ class UploadedFile
     public $error;
 
     /**
-     * SHA-1 checksum
+     * SHA-256 checksum
      *
-     * @var string 40 digit hexadecimal hash (160 bits)
      */
-    private $sha1;
+    private $sha256;
 
     /**
-     * Generates the SHA-1 or returns the cached SHA-1 hash for the file.
+     * Generates the SHA-256 or returns the cached SHA-1 hash for the file.
      *
-     * @return string|false $sha1
+     * @return string|false $sha256 The SHA-256 hash of the file or false if the file does not exist.
      */
-    public function getSha1()
+    public function getSha256()
     {
-        if (!$this->sha1) {
-            $this->sha1 = sha1_file($this->tempfile);
+        if (!$this->sha256) {
+            if (!file_exists($this->tempfile)) {
+                return false;
+            }
+
+            $this->sha256 = hash_file('sha256', $this->tempfile);
         }
 
-        return $this->sha1;
+        return $this->sha256;
     }
 }
+    
