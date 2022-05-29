@@ -20,7 +20,7 @@ CREATE TABLE `accounts` (
 
 CREATE TABLE `files` (
   `id` int(10) unsigned NOT NULL auto_increment,
-  `hash` char(40) default NULL,
+  `hash` char(64) default NULL,
   `originalname` varchar(255) default NULL,
   `filename` varchar(30) default NULL,
   `size` int(10) unsigned default NULL,
@@ -54,7 +54,7 @@ CREATE TABLE `invites` (
 
 CREATE TABLE `reports` (
   `id` int(10) unsigned NOT NULL auto_increment,
-  `hash` char(40) default '0',
+  `hash` char(64) default '0',
   `date` date default NULL,
   `file` varchar(255) NOT NULL default '0',
   `fileid` int(11) default '0',
