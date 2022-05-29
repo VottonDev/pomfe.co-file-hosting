@@ -88,6 +88,9 @@ const POMF_URL = 'https://a.pomfe.co/';
  */
 const ID_CHARSET = 'abcdefghijklmnopqrstuvwxyz';
 
+// ClamAV settings
+const POMF_CLAMAV_SCAN = false;
+
 
 /**
  * Filtered mime types

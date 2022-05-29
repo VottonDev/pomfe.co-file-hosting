@@ -1,5 +1,8 @@
 <?php
 session_start();
+require_once 'vendor/autoload.php';
+// Import ClamAV
+use Appwrite\ClamAV\Network;
 
 /**
  * Handles POST uploads, generates filenames, moves files around and commits
@@ -110,7 +113,6 @@ function uploadFile($file)
         }
     }
 
-
     // Check if a file with the same hash and size (a file which is the same)
     // does already exist in the database; if it does, return the proper link
     // and data. PHP deletes the temporary file just uploaded automatically.
@@ -151,6 +153,15 @@ function uploadFile($file)
     // Block files with a bad header
     if ($mNum == "4d5a9001") {
         throw new UploadException(UPLOAD_ERR_EXTENSION);
+    }
+
+    // Use ClamAV to scan the file
+    if (POMF_CLAMAV_SCAN) {
+        $clam = new Network();
+        $result = $clam->fileScan($tmp);
+        if ($result !== true) {
+            throw new UploadException(UPLOAD_ERR_MALICIOUS);
+        }
     }
 
     // Store the file's full file path in memory
