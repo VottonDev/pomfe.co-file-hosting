@@ -49,7 +49,7 @@ function generateName($file)
         $chars = ID_CHARSET;
         $name = '';
         for ($i = 0; $i < $length; ++$i) {
-            $name .= $chars[mt_rand(0, strlen($chars))];
+            $name .= $chars[random_int(0, strlen($chars))];
         }
 
         // Add the extension to the file name
@@ -192,7 +192,7 @@ function uploadFile($file)
     $q->bindValue(':size', $file->size, PDO::PARAM_INT);
     $q->bindValue(':date', date('Y-m-d'), PDO::PARAM_STR);
     $q->bindValue(':exp', null, PDO::PARAM_STR);
-    $q->bindValue(':del', sha1($file->tempfile), PDO::PARAM_STR);
+    $q->bindValue(':del', sha256($file->tempfile), PDO::PARAM_STR);
     $q->execute();
 
     return array(

@@ -83,13 +83,6 @@ if (isset($_SESSION['level'])) {
         <div class="footer">
             <?php include('global/footer.html'); ?>
         </div>
-
-        <p class="alert alert-info">
-            <strong>Want to see all of your files? Delete them? Or maybe you want a higher upload limit?</strong>
-            <br> Well, now you can! We have just recently implemented a user panel, which allows you to do just these things with <strong>many</strong> more features on their way.<br> 
-            <br>So, what are you waiting for? Sign up now!
-            <br><a href="https://cloud.pomfe.co/login.php" target="_BLANK">Log in</a> | <a href="https://cloud.pomfe.co/register.php" target="_BLANK">Register</a></div>
-
 </body>
 
 </html>
