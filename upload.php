@@ -150,13 +150,15 @@ function uploadFile($file)
 	$dispIn->execute(); */
 	
 	// Block executable files
-    if ($mNum == "4d5a9000") {
-        throw new UploadException(UPLOAD_ERR_EXTENSION);
-    }
-
-    // Block files with a bad header
-    if ($mNum == "4d5a9001") {
-        throw new UploadException(UPLOAD_ERR_EXTENSION);
+    switch ($mNum) {
+        case "4d5a9000":
+            throw new UploadException(UPLOAD_ERR_EXTENSION);
+            break;
+        case "4d5a9001":
+            throw new UploadException(UPLOAD_ERR_EXTENSION);
+            break;
+        default:
+            break;
     }
 
     // Store the file's full file path in memory

@@ -78,6 +78,9 @@ class Response
             case 'text':
                 $response = $this->textError($code, $desc);
                 break;
+            case 'default':
+                $response = $this->jsonError($code, $desc);
+                break;
         }
 
         http_response_code(500); // "500 Internal Server Error"
@@ -106,6 +109,9 @@ class Response
                 break;
             case 'text':
                 $response = $this->textSuccess($files);
+                break;
+            case 'default':
+                $response = $this->jsonSuccess($files);
                 break;
         }
 
