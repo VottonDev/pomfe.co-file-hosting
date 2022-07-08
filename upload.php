@@ -110,6 +110,12 @@ function uploadFile($file)
         }
     }
 
+    // If IP_LOGGING is enabled in settings then we log the IP of the uploader
+    if (IP_LOGGING) {
+        $q = $db->prepare('INSERT INTO files (ip) VALUES (:ip)');
+        $q->bindValue(':ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
+        $q->execute();
+    }
 
     // Check if a file with the same hash and size (a file which is the same)
     // does already exist in the database; if it does, return the proper link

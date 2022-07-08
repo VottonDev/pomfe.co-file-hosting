@@ -88,6 +88,9 @@ const POMF_URL = 'https://a.pomfe.co/';
  */
 const ID_CHARSET = 'abcdefghijklmnopqrstuvwxyz';
 
+// IP logging
+const IP_LOGGING = false;
+
 
 /**
  * Filtered mime types
