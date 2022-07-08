@@ -111,7 +111,7 @@ function uploadFile($file)
     }
 
     // If IP_LOGGING is enabled in settings then we log the IP of the uploader
-    if ((IP_LOGGING) == true) {
+    if (IP_LOGGING) {
         $q = $db->prepare('INSERT INTO files (ip) VALUES (:ip)');
         $q->bindValue(':ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
         $q->execute();
