@@ -97,17 +97,9 @@ function uploadFile($file)
     if ($file->size > $max_size) {
             throw new UploadException("File exceeds upload limit");
     }
-    // Check if mime type is blocked
-    if (!empty($FILTER_MIME)) {
-        if ($FILTER_MODE) { //whitelist mode
-            if (!in_array($file->mime, $FILTER_MIME)) {
-                throw new UploadException(UPLOAD_ERR_EXTENSION);
-            }
-        } else { //blacklist mode
-            if (in_array($file->mime, $FILTER_MIME)) {
-                throw new UploadException(UPLOAD_ERR_EXTENSION);
-            }
-        }
+    // Check if mime type is blocked and check if filter mode is enabled
+    if ($FILTER_MODE && in_array($file->type, $FILTER_MIME)) {
+        throw new UploadException("File type is blocked");
     }
 
     // If IP_LOGGING is enabled in settings then we log the IP of the uploader
