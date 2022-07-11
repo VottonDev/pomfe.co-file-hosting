@@ -34,5 +34,4 @@ Moe Panel: https://github.com/Pomfe/Moe-Panel
 * [phpMyAdmin](https://www.phpmyadmin.net/) - Easier to manage MySQL
 
 # Extra Info
-We are planning on discontinuing this very soon as we are moving pomfe.co over to closed source
-We will most likely leave this in a working condition so, if you want to use it feel free (it works with our version of moe panel). Any of our new creations won't be available on this repo (so no support for PomfePanel as that's closed source
+We will most likely leave this in a working condition so, if you want to use it feel free (it works with our version of moe panel).

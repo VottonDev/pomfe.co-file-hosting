@@ -50,7 +50,7 @@ function generateName($file)
         $chars = ID_CHARSET;
         $name = '';
         for ($i = 0; $i < $length; ++$i) {
-            $name .= $chars[mt_rand(0, strlen($chars))];
+            $name .= $chars[random_int(0, strlen($chars))];
         }
 
         // Add the extension to the file name
@@ -97,17 +97,16 @@ function uploadFile($file)
     if ($file->size > $max_size) {
             throw new UploadException("File exceeds upload limit");
     }
-    // Check if mime type is blocked
-    if (!empty($FILTER_MIME)) {
-        if ($FILTER_MODE) { //whitelist mode
-            if (!in_array($file->mime, $FILTER_MIME)) {
-                throw new UploadException(UPLOAD_ERR_EXTENSION);
-            }
-        } else { //blacklist mode
-            if (in_array($file->mime, $FILTER_MIME)) {
-                throw new UploadException(UPLOAD_ERR_EXTENSION);
-            }
-        }
+    // Check if mime type is blocked and check if filter mode is enabled
+    if ($FILTER_MODE && in_array($file->type, $FILTER_MIME)) {
+        throw new UploadException("File type is blocked");
+    }
+
+    // If IP_LOGGING is enabled in settings then we log the IP of the uploader
+    if (IP_LOGGING) {
+        $q = $db->prepare('INSERT INTO files (ip) VALUES (:ip)');
+        $q->bindValue(':ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
+        $q->execute();
     }
 
     // Check if a file with the same hash and size (a file which is the same)
@@ -143,13 +142,15 @@ function uploadFile($file)
 	$dispIn->execute(); */
 	
 	// Block executable files
-    if ($mNum == "4d5a9000") {
-        throw new UploadException(UPLOAD_ERR_EXTENSION);
-    }
-
-    // Block files with a bad header
-    if ($mNum == "4d5a9001") {
-        throw new UploadException(UPLOAD_ERR_EXTENSION);
+    switch ($mNum) {
+        case "4d5a9000":
+            throw new UploadException(UPLOAD_ERR_EXTENSION);
+            break;
+        case "4d5a9001":
+            throw new UploadException(UPLOAD_ERR_EXTENSION);
+            break;
+        default:
+            break;
     }
 
     // Use ClamAV to scan the file
@@ -204,7 +205,7 @@ function uploadFile($file)
     $q->bindValue(':size', $file->size, PDO::PARAM_INT);
     $q->bindValue(':date', date('Y-m-d'), PDO::PARAM_STR);
     $q->bindValue(':exp', null, PDO::PARAM_STR);
-    $q->bindValue(':del', sha1($file->tempfile), PDO::PARAM_STR);
+    $q->bindValue(':del', sha256($file->tempfile), PDO::PARAM_STR);
     $q->execute();
 
     return array(
