@@ -1,8 +1,6 @@
 <?php
 session_start();
 require_once 'vendor/autoload.php';
-// Import ClamAV
-use Appwrite\ClamAV\Network;
 
 /**
  * Handles POST uploads, generates filenames, moves files around and commits
@@ -91,11 +89,10 @@ function uploadFile($file)
         throw new UploadException($file->error);
     }
 
-    $max_size = 100;
     if (isset($_SESSION['Max_Upload'])) {
-        $max_size = $_SESSION['Max_Upload'];
+        $POMF_MAX_UPLOAD_SIZE = $_SESSION['Max_Upload'];
     }
-    $max_size = $max_size * 1048576;
+    $max_size = $POMF_MAX_UPLOAD_SIZE * 1048576;
 
     if ($file->size > $max_size) {
             throw new UploadException("File exceeds upload limit");

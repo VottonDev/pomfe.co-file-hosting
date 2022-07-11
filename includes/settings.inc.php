@@ -91,6 +91,8 @@ const ID_CHARSET = 'abcdefghijklmnopqrstuvwxyz';
 // ClamAV settings
 const POMF_CLAMAV_SCAN = false;
 
+// Max upload size in megabytes
+const POMF_MAX_UPLOAD_SIZE = 100;
 
 /**
  * Filtered mime types
