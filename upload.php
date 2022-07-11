@@ -85,19 +85,22 @@ function uploadFile($file)
     global $FILTER_MODE;
     global $FILTER_MIME;
 
-    // Handle file errors
-    if ($file->error) {
-        throw new UploadException($file->error);
+    $max_size = $POMF_MAX_UPLOAD_SIZE * 1048576;
+
+    // Handle the file upload
+    switch ($file) {
+        case $file->error:
+            throw new UploadException($file->error);
+            break;
+        case $file->size > $max_size:
+            throw new UploadException("File exceeds upload limit");
+            break;
     }
 
     if (isset($_SESSION['Max_Upload'])) {
         $POMF_MAX_UPLOAD_SIZE = $_SESSION['Max_Upload'];
     }
-    $max_size = $POMF_MAX_UPLOAD_SIZE * 1048576;
 
-    if ($file->size > $max_size) {
-        throw new UploadException("File exceeds upload limit");
-    }
     // Check if mime type is blocked and check if filter mode is enabled
     if ($FILTER_MODE && in_array($file->type, $FILTER_MIME)) {
         throw new UploadException("File type is blocked");
