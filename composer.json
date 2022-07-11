@@ -1,7 +1,8 @@
 {
-	"require": {
-		"phpunit/phpunit": "6.3.*",
-      "ext-json": "*",
-      "ext-pdo": "*"
-    }
+  "require": {
+    "phpunit/phpunit": "8.*",
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "appwrite/php-clamav": "^1.0"
+  }
 }

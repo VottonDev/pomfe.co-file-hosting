@@ -88,9 +88,11 @@ const POMF_URL = 'https://a.pomfe.co/';
  */
 const ID_CHARSET = 'abcdefghijklmnopqrstuvwxyz';
 
-// IP logging
-const IP_LOGGING = false;
+// ClamAV settings
+const POMF_CLAMAV_SCAN = false;
 
+// Max upload size in megabytes
+const POMF_MAX_UPLOAD_SIZE = 100;
 
 /**
  * Filtered mime types

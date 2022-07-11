@@ -52,6 +52,9 @@ class UploadException extends Exception
             case UPLOAD_ERR_EXTENSION:
                 $message = 'File type not allowed';
                 break;
+            case UPLOAD_ERR_MALICIOUS:
+                $message = 'File is malicious';
+                break;
 
             default:
                 $message = 'Unknown upload error';
