@@ -87,15 +87,17 @@ function uploadFile($file)
 
     $max_size = POMF_MAX_UPLOAD_SIZE * 1048576;
 
-    // Handle the file upload
+    // If we find Max_Upload session then we re-declare the max size
     if (isset($_SESSION['Max_Upload'])) {
-        $max_size == $_SESSION['Max_Upload'];
+        $max_size = $_SESSION['Max_Upload'] * 1048576;
     }
 
+    // Check if upload errors or not
     if ($file->error) {
         throw new UploadException($file->error);
     }
 
+    // Check the file size
     if ($file->size > $max_size) {
         throw new UploadException("File exceeds upload limit");
     }
