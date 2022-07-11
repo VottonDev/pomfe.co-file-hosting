@@ -85,7 +85,7 @@ function uploadFile($file)
     global $FILTER_MODE;
     global $FILTER_MIME;
 
-    $max_size = $POMF_MAX_UPLOAD_SIZE * 1048576;
+    $max_size = POMF_MAX_UPLOAD_SIZE * 1048576;
 
     // Handle the file upload
     switch ($file) {
@@ -98,7 +98,7 @@ function uploadFile($file)
     }
 
     if (isset($_SESSION['Max_Upload'])) {
-        $POMF_MAX_UPLOAD_SIZE = $_SESSION['Max_Upload'];
+        $max_size = $_SESSION['Max_Upload'];
     }
 
     // Check if mime type is blocked and check if filter mode is enabled
