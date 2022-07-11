@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require_once 'vendor/autoload.php';
 
@@ -95,7 +96,7 @@ function uploadFile($file)
     $max_size = $POMF_MAX_UPLOAD_SIZE * 1048576;
 
     if ($file->size > $max_size) {
-            throw new UploadException("File exceeds upload limit");
+        throw new UploadException("File exceeds upload limit");
     }
     // Check if mime type is blocked and check if filter mode is enabled
     if ($FILTER_MODE && in_array($file->type, $FILTER_MIME)) {
@@ -131,17 +132,17 @@ function uploadFile($file)
     $newname = generateName($file);
 
     // Just storing the temp file thing to the var tmp to make it easier
-	$tmp =  $file->tempfile;
-	// Now I'm opening the temporary file (the thing above)
-	$oFile = fopen($tmp, "r");
-	// Now I'm reading the first 4 bytes, converting them to hexadecimal and storing them to a variable
-	$mNum = bin2hex(fread($oFile, 4));
-	// This is just for testing - it's disabled for now to prevent database spam
-/*	$dispIn = $db->prepare('INSERT INTO test (info) VALUES (:msg)');
-	$dispIn->bindParam(":msg", $mNum);
-	$dispIn->execute(); */
-	
-	// Block executable files
+    $tmp =  $file->tempfile;
+    // Now I'm opening the temporary file (the thing above)
+    $oFile = fopen($tmp, "r");
+    // Now I'm reading the first 4 bytes, converting them to hexadecimal and storing them to a variable
+    $mNum = bin2hex(fread($oFile, 4));
+    // This is just for testing - it's disabled for now to prevent database spam
+    /*	$dispIn = $db->prepare('INSERT INTO test (info) VALUES (:msg)');
+        $dispIn->bindParam(":msg", $mNum);
+        $dispIn->execute(); */
+
+    // Block executable files
     switch ($mNum) {
         case "4d5a9000":
             throw new UploadException(UPLOAD_ERR_EXTENSION);
